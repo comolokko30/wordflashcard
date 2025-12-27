@@ -1,0 +1,325 @@
+clue (n): A piece of evidence used to solve a mystery or problem.
+translate (v): To change words from one language into another.
+outline (n, v): A general description or plan showing the essential features.
+collapse (n, v): To fall down or give way suddenly.
+populated (adj): Inhabited by people.
+forbid (v): To refuse to allow something; to prohibit.
+ban (n, v): To officially or legally prohibit something.
+vote (n, v): To formally express a choice or opinion in an election.
+remain (v): To stay in the same place or condition.
+qualify (v): To be entitled to a benefit or privilege by fulfilling a condition.
+weapon (n): A tool used to cause physical harm or damage.
+randomly (adv): Without a specific pattern, method, or decision.
+task (n): A piece of work to be done or undertaken.
+chart (n): A sheet of information in the form of a table, graph, or diagram.
+joyful (adj): Feeling, expressing, or causing great pleasure and happiness.
+election (n): A formal process of choosing a person for public office by voting.
+heritage (n): Valued objects and qualities (like culture) passed down from previous generations.
+nervous (adj): Easily agitated or alarmed; anxious.
+alternative (n, adj): One of two or more available possibilities.
+elect (v): To choose someone to hold public office by voting.
+
+
+
+
+
+mood (n): A temporary state of mind or feeling.
+gather (v): To come together; to assemble or accumulate.
+severe (adj): Very great, intense, strict, or harsh.
+represent (v): To speak or act on behalf of someone else.
+atmosphere (n): The tone or mood of a place or situation; the air surrounding the earth.
+potential (n, adj): Latent qualities or abilities that may be developed and lead to future success.
+duty (n): A moral or legal obligation; a responsibility.
+border (n): A line separating two political or geographical areas.
+custom (n): A traditional and widely accepted way of behaving or doing something.
+recession (n): A period of temporary economic decline.
+envious (adj): Feeling or showing envy or jealousy.
+frequent (adj): Occurring or done on many occasions.
+envy (n, v): A feeling of discontented longing aroused by someone else's possessions or luck.
+region (n): An area or division, especially part of a country or the world.
+consist (v): To be composed or made up of specific ingredients.
+entire (adj): With no part left out; whole.
+material (n): The matter from which a thing is or can be made.
+satisfied (adj): Contented; pleased because one has achieved what one wanted.
+calculate (v): To determine the amount or number of something mathematically.
+
+
+
+
+hang (v): To suspend or be suspended from above with the lower part dangling free.
+install (v): To place or fix equipment in position ready for use.
+defeat (n, v): To win a victory over someone in a battle or competition.
+incorporate (v): To take in or contain something as part of a whole.
+desperate (adj): Feeling or showing a hopeless sense that a situation is so bad as to be impossible to deal with.
+differentiate (v): To recognize or ascertain what makes someone or something different.
+soil (n): The upper layer of earth in which plants grow.
+state (v): To express something definitely or clearly in speech or writing.
+argue (v): To give reasons or cite evidence in support of an idea or theory, often in a disagreement.
+luxury (n): The state of great comfort and extravagant living.
+strategy (n): A plan of action or policy designed to achieve a major or overall aim.
+isolated (adj): Far away from other places, buildings, or people.
+utilize / utilise (v): To make practical and effective use of something.
+path (n): A way or track laid down for walking or made by continual treading.
+suffer (v): To experience or be subjected to something bad or unpleasant.
+magic (n): The power of apparently influencing the course of events by using mysterious or supernatural forces.
+transfer (v): To move from one place to another.
+symptom (n): A physical or mental feature indicating a condition of disease.
+tear (v, n): To pull apart or to pieces with force; a drop of clear salty liquid secreted by the eye.
+earning (n): Money obtained in return for labor or services.
+prevent (v): To keep something from happening or arising.
+indicate (v): To point out; to show.
+arrest (n, v): To seize someone by legal authority and take them into custody.
+construct (v): To build or erect something.
+preserve (v): To maintain something in its original or existing state.
+media (n): The main means of mass communication (broadcasting, publishing, and the internet).
+wish (v, n): To feel or express a strong desire or hope for something.
+oppose (v): To disapprove of and attempt to prevent, especially by argument.
+trade (n, v): The action of buying and selling goods and services.
+implement (v): To put a decision, plan, or agreement into effect.
+domestic (adj): Relating to the running of a home or to one's own country.
+purpose (n): The reason for which something is done or created.
+virtual (adj): Almost or nearly as described; existing in software or on the internet.
+superb (adj): Excellent; impressively splendid.
+update (n, v): To make something more modern or up to date.
+appropriate (adj): Suitable or proper in the circumstances.
+government (n): The governing body of a nation, state, or community.
+differ (v): To be unlike or dissimilar.
+pursue (v): To follow someone or something in order to catch or attack them; to seek to attain.
+generate (v): To cause something to arise or come about; to produce.
+gradual (adj): Taking place or progressing slowly or by degrees.
+internal (adj): Of or situated on the inside.
+permission (n): Consent or authorization.
+permit (v): To give authorization or consent to someone to do something.
+sympathy (n): Feelings of pity and sorrow for someone else's misfortune.
+sensible (adj): Chosen in accordance with wisdom or prudence; likely to be of benefit.
+behaviour (n): The way in which one acts or conducts oneself.
+cure (n, v): To relieve of the symptoms of a disease or condition.
+budget (n): An estimate of income and expenditure for a  period of time.
+retirement (n): The action or fact of leaving one's job and ceasing to work.
+parliament (n): A legislative body of government.
+competitive (adj): Relating to or characterized by competition.
+export (n, v): To send goods or services to another country for sale.
+join (v): To link or connect; to become a member of.
+beat (v, n): To strike repeatedly; to defeat someone in a contest.
+mention (v): To refer to something briefly and without going into detail.
+theory (n): A supposition or a system of ideas intended to explain something.
+council (n): An advisory, deliberative, or legislative body of people formally constituted.
+reinforce (v): To strengthen or support, especially with additional personnel or material.
+philosophy (n): The study of the fundamental nature of knowledge, reality, and existence.
+standard (n, adj): A level of quality or attainment.
+gain (v): To obtain or secure something desired, such as profit.
+deal (n): An agreement entered into by two or more parties.
+evolve (v): To develop gradually, especially from a simple to a more complex form.
+subject (n): A person or thing that is being discussed, described, or dealt with.
+damage (v, n): Physical harm caused to something in such a way as to impair its value, usefulness, or normal function.
+steal (v): To take another person's property without permission.
+admit (v): To confess to be true or to be the case.
+prison (n): A building where people are held as punishment for a crime.
+stressful (adj): Causing mental or emotional stress.
+poisonous (adj): Causing or capable of causing death or illness if taken into the body.
+refuse (v): To indicate or show that one is not willing to do something.
+poison (n): A substance that causes death or injury when swallowed or absorbed.
+data (n): Facts and statistics collected together for reference or analysis.
+classify (v): To arrange in classes or categories according to shared qualities.
+remote (adj): Situated far from the main centers of population; distant.
+dissimilar (adj): Not alike; different.
+fee (n): A payment made to a professional person or to a public body in exchange for advice or services.
+tremble (v): To shake involuntarily, typically as a result of anxiety, excitement, or frailty.
+pretend (v): To speak and act so as to make it appear that something is the case when in fact it is not.
+maximum (adj): The greatest or highest amount possible or attained.
+ashamed (adj): Embarrassed or guilty because of one's actions or characteristics.
+attack (n, v): To take aggressive action against.
+absence (n): The state of being away from a place or person.
+master (n, v): A person who has dominance or control; to acquire complete knowledge or skill.
+rumor/rumour (n): A currently circulating story or report of uncertain or doubtful truth.
+research (v, n): The systematic investigation into and study of materials and sources.
+insist (v): To demand something forcefully, not accepting refusal.
+resign (v): To voluntarily leave a job or other position.
+inject (v): To drive or force (a liquid, especially a drug) into a person or animal's body with a syringe.
+eager (adj): Strongly wanting to do or have something.
+request (n, v): To politely or formally ask for something.
+belief (n): An acceptance that a statement is true or that something exists.
+rate (n): A measure, quantity, or frequency.
+drug (n): A medicine or other substance which has a physiological effect when ingested.
+lie (n, v): To make an untrue statement with intent to deceive; a false statement.
+shelter (n, v): A place giving temporary protection from bad weather or danger.
+liberty (n): The state of being free within society from oppressive restrictions.
+loyal (adj): Giving or showing firm and constant support or allegiance.
+stock (n, v): The goods or merchandise kept on the premises of a business.
+chain (n): A group of establishments, such as hotels or shops, owned by the same company.
+tease (v): To make fun of or attempt to provoke in a playful or unkind way.
+insult (n, v): To speak to or treat with disrespect or scornful abuse.
+style (n): A manner of doing something; a distinctive appearance.
+deserve (v): To do something or have or show qualities worthy of reward or punishment.
+collaborate (v): To work jointly on an activity, especially to produce or create something.
+infectious (adj): Likely to spread infection; likely to spread to others.
+recall (v): To bring a fact, event, or situation back into one's mind.
+object (n, v): To say something to express one's disapproval or disagreement.
+original (adj): Present or existing from the beginning; not a copy.
+proficiency (n): A high degree of competence or skill; expertise.
+repetitive (adj): Containing or characterized by repetition, especially when unnecessary or tiresome.
+option (n): A thing that is or may be chosen.
+widely (adv): Over a large area or range; extensively.
+tempt (v): To entice or attempt to entice someone to do something.
+flexible (adj): Capable of bending easily without breaking; able to change or adapt.
+contain (v): To have or hold something within.
+devote (v): To give all or a large part of one's time or resources to a specific purpose.
+proud (adj): Feeling deep pleasure or satisfaction as a result of one's own achievements.
+urgent (adj): Requiring immediate action or attention.
+complain (v): To express dissatisfaction or annoyance about a state of affairs or an event.
+honor / honour (n, v): High respect; great esteem.
+intention (n): A thing intended; an aim or plan.
+form (v): To bring together parts to create something.
+warn (v): To inform someone in advance of an impending or possible danger.
+inherit (v): To receive money, property, or a title as an heir at the death of the previous holder.
+organize (v): To arrange into a structured whole; order.
+ (v, n): To put, lay, or stand something in a specified place or position.
+delight (n): Great pleasure.
+dare (v): To have the courage to do something.
+developed (adj): Advanced or elaborated to a specified degree.
+commit (v): To carry out or perpetrate a mistake, crime, or immoral act.
+hire (v): To employ someone for wages.
+session (n): A period devoted to a particular activity.
+explode (v): To burst or shatter violently and noisily.
+prejudice (n): Preconceived opinion that is not based on reason or actual experience.
+up (v, adj): Unhappy, disappointed, or worried.
+scene (n): The place where an incident in real life or fiction occurs.
+effort (n): A vigorous or determined attempt.
+block (n, v): To make movement or flow difficult or impossible.
+scarce (adj): Insufficient for the demand; rare.
+promise (n, v): A declaration that one will do or refrain from doing something specified.
+latter (adj, n): Occurring nearer to the end of something than to the beginning; the second of two mentioned.
+reach (v): To arrive at; to stretch out.
+disaster (n): A sudden event, such as an accident or a natural catastrophe, that causes great damage.
+treatment (n): Medical care given to a patient for an illness or injury.
+compulsory (adj): Required by law or a rule; obligatory.
+treat (v): To behave towards or deal with in a certain way; to give medical care.
+afford (v): To have enough money to pay for.
+silence (n): Complete absence of sound.
+defend (v): To resist an attack made on someone or something.
+slight (adj): Small in degree; inconsiderable.
+universal (adj): Of, affecting, or done by all people or things in the world.
+smooth (adj): Having an even and regular surface; free from lumps.
+debate (n, v): A formal discussion on a particular topic.
+transform (v): To make a thorough or dramatic change in form, appearance, or character.
+suitable (adj): Right or appropriate for a particular person, purpose, or situation.
+virtuous (adj): Having or showing high moral standards.
+pure (adj): Not mixed or adulterated with any other substance or material.
+loosen (v): To make something less tight or firm.
+interfere (v): To prevent a process or activity from continuing or being carried out properly.
+external (adj): Belonging to or forming the outer surface or structure of something.
+controversial (adj): Giving rise or likely to give rise to public disagreement.
+revenge (n): The action of inflicting hurt or harm on someone for an injury or wrong suffered.
+fellow (adj): Sharing a particular activity, quality, or condition with someone.
+signal (n, v): A gesture, action, or sound that is used to convey information or instructions.
+speculate (v): To form a theory or conjecture about a subject without firm evidence.
+individual (n, adj): Single; separate.
+pile (n): A heap of things laid or lying one on top of another.
+crisis (n): A time of intense difficulty, trouble, or danger.
+detect (v): To discover or identify the presence or existence of something.
+broad (adj): Having an ample distance from side to side; wide.
+overtime (n): Time worked in addition to one's normal working hours.
+primarily (adv): For the most part; mainly.
+divide (v): To separate or be separated into parts.
+temper (n): A person's state of mind seen in terms of their being angry or calm.
+sacrifice (n, v): To give up something valued for the sake of other considerations.
+enthusiasm (n): Intense and eager enjoyment, interest, or approval.
+poll (n, v): The process of voting in an election; a survey of public opinion.
+solid (adj): Firm and stable in shape; not liquid or fluid.
+load (n, v): A heavy or bulky thing that is being carried or is about to be carried.
+symbol (n): A mark or character used as a conventional representation of an object.
+shortage (n): A state or situation in which something needed cannot be obtained in sufficient amounts.
+network (n, v): A group or system of interconnected people or things.
+thoroughly (adv): In a detailed and complete way.
+plain (adj): Not decorated or elaborate; simple or ordinary.
+definition (n): A statement of the exact meaning of a word.
+visualize / visualise (v): To form a mental image of; to imagine.
+shine (v): To give out a bright light.
+rotate (v): To move or cause to move in a circle around an axis or center.
+royal (n, adj): Having the status of a king or queen or a member of their family.
+indirect (adj): Not directly caused by or resulting from something.
+charge (n, v): To demand an amount as a price for a service rendered or goods supplied.
+barrier (n): A fence or other obstacle that prevents movement or access.
+policy (n): A course or principle of action adopted or proposed by a government or organization.
+push (n, v): To exert force on someone or something in order to move them away.
+aloud (adv): Audibly; not silently.
+hardly (adv): Scarcely; barely.
+ownership (n): The act, state, or right of possessing something.
+fate (n): The development of events beyond a person's control, regarded as determined by a supernatural power.
+justice (n): Just behavior or treatment; the quality of being fair.
+theme (n): The subject of a talk, a piece of writing, a person's thoughts, or an exhibition.
+fierce (adj): Having or displaying an intense or ferocious aggressiveness.
+political (adj): Relating to the government or the public affairs of a country.
+shake (v): To move an object up and down or from side to side with rapid, forceful, jerky movements.
+debt (n): Something, typically money, that is owed or due.
+apply (v): To make a formal application or request.
+input (n): What is put in, taken in, or operated on by any process or system.
+price (n): The amount of money expected, required, or given in payment for something.
+waste (n, v): To use or expend carelessly, extravagantly, or to no purpose.
+jealous (adj): Feeling or showing envy of someone or their achievements and advantages.
+current (adj): Belonging to the present time; happening or being used or done now.
+guarantee (n, v): A formal promise or assurance.
+post (n, v): A long, sturdy piece of timber or metal  upright in the ground; to send via mail.
+preferable (adj): More desirable or suitable.
+currency (n): A system of money in general use in a particular country.
+scratch (n, v): To score or mark the surface of something with a sharp or pointed object.
+dimensional (adj): Relating to measurements or dimensions.
+fund (n, v): A sum of money saved or made available for a particular purpose.
+violent (adj): Using or involving physical force intended to hurt, damage, or kill.
+mental (adj): Relating to the mind.
+respect (n, v): A feeling of deep admiration for someone or something.
+favour/favor (n): Approval, support, or liking for someone or something.
+query (v, n): A question, especially one addressed to an official or organization.
+bury (v): To put or hide under ground.
+hide (n, v): To put or keep out of sight.
+conclude (v): To bring something to an end.
+quarrel (n, v): An angry argument or disagreement.
+regular (adj): Arranged in or constituting a constant or definite pattern.
+split (n, v): To break or cause to break forcibly into parts.
+cruel (adj): Willfully causing pain or suffering to others, or feeling no concern about it.
+exploit (v): To make full use of and derive benefit from (a resource); sometimes unfairly.
+bright (adj): Giving out or reflecting a lot of light; vivid or bold.
+flow (v, n): To move steadily and continuously in a current or stream.
+display (n, v): To make a prominent exhibition of something.
+substance (n): A particular kind of matter with uniform properties.
+double (adj, v, n): Consisting of two equal, identical, or similar parts or things.
+voice (n): The sound produced in a person's larynx and uttered through the mouth.
+rest (v, n): To cease work or movement in order to relax, refresh oneself, or recover strength.
+allocate (v): To distribute (resources or duties) for a particular purpose.
+generation (n): All of the people born and living at about the same time.
+ridiculous (adj): Deserving or inviting derision or mockery; absurd.
+supply (n, v): To make something needed or wanted available to someone; provide.
+attach (v): To fasten, join, or connect something.
+tough (adj): Strong enough to withstand adverse conditions or rough handling.
+apologize (v): To express regret for something that one has done wrong.
+pace (n): A single step taken when walking or running; speed.
+cheat (v): To act dishonestly or unfairly in order to gain an advantage.
+dull (adj): Lacking interest or excitement; boring.
+praise (n, v): To express warm approval or admiration of.
+volunteer (v): To freely offer to do something.
+gratitude (n): The quality of being thankful; readiness to show appreciation.
+depth (n): The distance from the top or surface to the bottom of something.
+discount (n): A deduction from the usual cost of something.
+ambassador (n): An accredited diplomat sent by a country as its official representative to a foreign country.
+nationally (adv): With reference to a whole nation.
+vital (adj): Absolutely necessary or important; essential.
+calm (adj): Not showing or feeling nervousness, anger, or other strong emotions.
+dietician (n): An expert on diet and nutrition.
+ancient (adj): Belonging to the very distant past and no longer in existence.
+remedy (n, v): A medicine or treatment for a disease or injury.
+rely on (v): To depend on with full trust or confidence.
+source (n): A place, person, or thing from which something comes or can be obtained.
+register (v): To enter or record on an official list or directory.
+deadline (n): The latest time or date by which something should be completed.
+process (n, v): A series of actions or steps taken in order to achieve a particular end.
+scan (v): To look at all parts of something carefully in order to detect some feature.
+repair (v): To fix or mend something that is broken or damaged.
+virus (n): A piece of code that is capable of copying itself and typically has a detrimental effect; an infective agent.
+attitude (n): A tled way of thinking or feeling about someone or something.
+giant (n, adj): An imaginary or mythical being of human form but superhuman size; of very great size.
+allow (v): To give permission to do something.
+regret (v): To feel sad, repentant, or disappointed over something that has happened.
+starve (v): To suffer severely or die from hunger.
+venue (n): The place where something happens, especially an organized event.
+extend (v): To cause to cover a larger area; make longer or wider.
+
