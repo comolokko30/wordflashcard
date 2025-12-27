@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Vocabulary Flashcards</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --secondary: #f5f6fa;
+            --text: #2c3e50;
+            --card-bg: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 { color: var(--text); margin-bottom: 20px; }
+
+        /* KART YAPISI (3D EFFECT) */
+        .scene {
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card__face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
+            background: var(--card-bg);
+        }
+
+        /* ÖN YÜZ (KELİME) */
+        .card__face--front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card__face--front h2 { font-size: 2rem; margin: 0; }
+        .card__face--front p { margin-top: 10px; opacity: 0.8; font-size: 0.9rem; }
+
+        /* ARKA YÜZ (TANIM) */
+        .card__face--back {
+            background: white;
+            color: var(--text);
+            transform: rotateY(180deg);
+            border: 2px solid #764ba2;
+        }
+
+        .card__face--back p { font-size: 1.2rem; line-height: 1.6; }
+
+        /* KONTROLLER */
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button:hover { background: #357abd; }
+        button.secondary { background: #95a5a6; }
+
+        .progress { margin-top: 15px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+    <h1>📚 Vocabulary Cards</h1>
+
+    <div class="scene">
+        <div class="card">
+            <div class="card__face card__face--front">
+                <h2 id="word-display">Loading...</h2>
+                <p>Click to see definition</p>
+            </div>
+            <div class="card__face card__face--back">
+                <p id="def-display">...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress" id="progress-display">Card 1 / 0</div>
+
+    <div class="controls">
+        <button onclick="prevCard()">← Prev</button>
+        <button class="secondary" onclick="randomCard()">Shuffle 🎲</button>
+        <button onclick="nextCard()">Next →</button>
+    </div>
+
+    <script>
+        // PYTHON TARAFINDAN GÖMÜLEN VERİ
+        const vocabList = [{"word": "clue (n)", "definition": "A piece of evidence used to solve a mystery or problem."}, {"word": "translate (v)", "definition": "To change words from one language into another."}, {"word": "outline (n, v)", "definition": "A general description or plan showing the essential features."}, {"word": "collapse (n, v)", "definition": "To fall down or give way suddenly."}, {"word": "populated (adj)", "definition": "Inhabited by people."}, {"word": "forbid (v)", "definition": "To refuse to allow something; to prohibit."}, {"word": "ban (n, v)", "definition": "To officially or legally prohibit something."}, {"word": "vote (n, v)", "definition": "To formally express a choice or opinion in an election."}, {"word": "remain (v)", "definition": "To stay in the same place or condition."}, {"word": "qualify (v)", "definition": "To be entitled to a benefit or privilege by fulfilling a condition."}, {"word": "weapon (n)", "definition": "A tool used to cause physical harm or damage."}, {"word": "randomly (adv)", "definition": "Without a specific pattern, method, or decision."}, {"word": "task (n)", "definition": "A piece of work to be done or undertaken."}, {"word": "chart (n)", "definition": "A sheet of information in the form of a table, graph, or diagram."}, {"word": "joyful (adj)", "definition": "Feeling, expressing, or causing great pleasure and happiness."}, {"word": "election (n)", "definition": "A formal process of choosing a person for public office by voting."}, {"word": "heritage (n)", "definition": "Valued objects and qualities (like culture) passed down from previous generations."}, {"word": "nervous (adj)", "definition": "Easily agitated or alarmed; anxious."}, {"word": "alternative (n, adj)", "definition": "One of two or more available possibilities."}, {"word": "elect (v)", "definition": "To choose someone to hold public office by voting."}, {"word": "mood (n)", "definition": "A temporary state of mind or feeling."}, {"word": "gather (v)", "definition": "To come together; to assemble or accumulate."}, {"word": "severe (adj)", "definition": "Very great, intense, strict, or harsh."}, {"word": "represent (v)", "definition": "To speak or act on behalf of someone else."}, {"word": "atmosphere (n)", "definition": "The tone or mood of a place or situation; the air surrounding the earth."}, {"word": "potential (n, adj)", "definition": "Latent qualities or abilities that may be developed and lead to future success."}, {"word": "duty (n)", "definition": "A moral or legal obligation; a responsibility."}, {"word": "border (n)", "definition": "A line separating two political or geographical areas."}, {"word": "custom (n)", "definition": "A traditional and widely accepted way of behaving or doing something."}, {"word": "recession (n)", "definition": "A period of temporary economic decline."}, {"word": "envious (adj)", "definition": "Feeling or showing envy or jealousy."}, {"word": "frequent (adj)", "definition": "Occurring or done on many occasions."}, {"word": "envy (n, v)", "definition": "A feeling of discontented longing aroused by someone else's possessions or luck."}, {"word": "region (n)", "definition": "An area or division, especially part of a country or the world."}, {"word": "consist (v)", "definition": "To be composed or made up of specific ingredients."}, {"word": "entire (adj)", "definition": "With no part left out; whole."}, {"word": "material (n)", "definition": "The matter from which a thing is or can be made."}, {"word": "satisfied (adj)", "definition": "Contented; pleased because one has achieved what one wanted."}, {"word": "calculate (v)", "definition": "To determine the amount or number of something mathematically."}, {"word": "hang (v)", "definition": "To suspend or be suspended from above with the lower part dangling free."}, {"word": "install (v)", "definition": "To place or fix equipment in position ready for use."}, {"word": "defeat (n, v)", "definition": "To win a victory over someone in a battle or competition."}, {"word": "incorporate (v)", "definition": "To take in or contain something as part of a whole."}, {"word": "desperate (adj)", "definition": "Feeling or showing a hopeless sense that a situation is so bad as to be impossible to deal with."}, {"word": "differentiate (v)", "definition": "To recognize or ascertain what makes someone or something different."}, {"word": "soil (n)", "definition": "The upper layer of earth in which plants grow."}, {"word": "state (v)", "definition": "To express something definitely or clearly in speech or writing."}, {"word": "argue (v)", "definition": "To give reasons or cite evidence in support of an idea or theory, often in a disagreement."}, {"word": "luxury (n)", "definition": "The state of great comfort and extravagant living."}, {"word": "strategy (n)", "definition": "A plan of action or policy designed to achieve a major or overall aim."}, {"word": "isolated (adj)", "definition": "Far away from other places, buildings, or people."}, {"word": "utilize / utilise (v)", "definition": "To make practical and effective use of something."}, {"word": "path (n)", "definition": "A way or track laid down for walking or made by continual treading."}, {"word": "suffer (v)", "definition": "To experience or be subjected to something bad or unpleasant."}, {"word": "magic (n)", "definition": "The power of apparently influencing the course of events by using mysterious or supernatural forces."}, {"word": "transfer (v)", "definition": "To move from one place to another."}, {"word": "symptom (n)", "definition": "A physical or mental feature indicating a condition of disease."}, {"word": "tear (v, n)", "definition": "To pull apart or to pieces with force; a drop of clear salty liquid secreted by the eye."}, {"word": "earning (n)", "definition": "Money obtained in return for labor or services."}, {"word": "prevent (v)", "definition": "To keep something from happening or arising."}, {"word": "indicate (v)", "definition": "To point out; to show."}, {"word": "arrest (n, v)", "definition": "To seize someone by legal authority and take them into custody."}, {"word": "construct (v)", "definition": "To build or erect something."}, {"word": "preserve (v)", "definition": "To maintain something in its original or existing state."}, {"word": "media (n)", "definition": "The main means of mass communication (broadcasting, publishing, and the internet)."}, {"word": "wish (v, n)", "definition": "To feel or express a strong desire or hope for something."}, {"word": "oppose (v)", "definition": "To disapprove of and attempt to prevent, especially by argument."}, {"word": "trade (n, v)", "definition": "The action of buying and selling goods and services."}, {"word": "implement (v)", "definition": "To put a decision, plan, or agreement into effect."}, {"word": "domestic (adj)", "definition": "Relating to the running of a home or to one's own country."}, {"word": "purpose (n)", "definition": "The reason for which something is done or created."}, {"word": "virtual (adj)", "definition": "Almost or nearly as described; existing in software or on the internet."}, {"word": "superb (adj)", "definition": "Excellent; impressively splendid."}, {"word": "update (n, v)", "definition": "To make something more modern or up to date."}, {"word": "appropriate (adj)", "definition": "Suitable or proper in the circumstances."}, {"word": "government (n)", "definition": "The governing body of a nation, state, or community."}, {"word": "differ (v)", "definition": "To be unlike or dissimilar."}, {"word": "pursue (v)", "definition": "To follow someone or something in order to catch or attack them; to seek to attain."}, {"word": "generate (v)", "definition": "To cause something to arise or come about; to produce."}, {"word": "gradual (adj)", "definition": "Taking place or progressing slowly or by degrees."}, {"word": "internal (adj)", "definition": "Of or situated on the inside."}, {"word": "permission (n)", "definition": "Consent or authorization."}, {"word": "permit (v)", "definition": "To give authorization or consent to someone to do something."}, {"word": "sympathy (n)", "definition": "Feelings of pity and sorrow for someone else's misfortune."}, {"word": "sensible (adj)", "definition": "Chosen in accordance with wisdom or prudence; likely to be of benefit."}, {"word": "behaviour (n)", "definition": "The way in which one acts or conducts oneself."}, {"word": "cure (n, v)", "definition": "To relieve of the symptoms of a disease or condition."}, {"word": "budget (n)", "definition": "An estimate of income and expenditure for a  period of time."}, {"word": "retirement (n)", "definition": "The action or fact of leaving one's job and ceasing to work."}, {"word": "parliament (n)", "definition": "A legislative body of government."}, {"word": "competitive (adj)", "definition": "Relating to or characterized by competition."}, {"word": "export (n, v)", "definition": "To send goods or services to another country for sale."}, {"word": "join (v)", "definition": "To link or connect; to become a member of."}, {"word": "beat (v, n)", "definition": "To strike repeatedly; to defeat someone in a contest."}, {"word": "mention (v)", "definition": "To refer to something briefly and without going into detail."}, {"word": "theory (n)", "definition": "A supposition or a system of ideas intended to explain something."}, {"word": "council (n)", "definition": "An advisory, deliberative, or legislative body of people formally constituted."}, {"word": "reinforce (v)", "definition": "To strengthen or support, especially with additional personnel or material."}, {"word": "philosophy (n)", "definition": "The study of the fundamental nature of knowledge, reality, and existence."}, {"word": "standard (n, adj)", "definition": "A level of quality or attainment."}, {"word": "gain (v)", "definition": "To obtain or secure something desired, such as profit."}, {"word": "deal (n)", "definition": "An agreement entered into by two or more parties."}, {"word": "evolve (v)", "definition": "To develop gradually, especially from a simple to a more complex form."}, {"word": "subject (n)", "definition": "A person or thing that is being discussed, described, or dealt with."}, {"word": "damage (v, n)", "definition": "Physical harm caused to something in such a way as to impair its value, usefulness, or normal function."}, {"word": "steal (v)", "definition": "To take another person's property without permission."}, {"word": "admit (v)", "definition": "To confess to be true or to be the case."}, {"word": "prison (n)", "definition": "A building where people are held as punishment for a crime."}, {"word": "stressful (adj)", "definition": "Causing mental or emotional stress."}, {"word": "poisonous (adj)", "definition": "Causing or capable of causing death or illness if taken into the body."}, {"word": "refuse (v)", "definition": "To indicate or show that one is not willing to do something."}, {"word": "poison (n)", "definition": "A substance that causes death or injury when swallowed or absorbed."}, {"word": "data (n)", "definition": "Facts and statistics collected together for reference or analysis."}, {"word": "classify (v)", "definition": "To arrange in classes or categories according to shared qualities."}, {"word": "remote (adj)", "definition": "Situated far from the main centers of population; distant."}, {"word": "dissimilar (adj)", "definition": "Not alike; different."}, {"word": "fee (n)", "definition": "A payment made to a professional person or to a public body in exchange for advice or services."}, {"word": "tremble (v)", "definition": "To shake involuntarily, typically as a result of anxiety, excitement, or frailty."}, {"word": "pretend (v)", "definition": "To speak and act so as to make it appear that something is the case when in fact it is not."}, {"word": "maximum (adj)", "definition": "The greatest or highest amount possible or attained."}, {"word": "ashamed (adj)", "definition": "Embarrassed or guilty because of one's actions or characteristics."}, {"word": "attack (n, v)", "definition": "To take aggressive action against."}, {"word": "absence (n)", "definition": "The state of being away from a place or person."}, {"word": "master (n, v)", "definition": "A person who has dominance or control; to acquire complete knowledge or skill."}, {"word": "rumor/rumour (n)", "definition": "A currently circulating story or report of uncertain or doubtful truth."}, {"word": "research (v, n)", "definition": "The systematic investigation into and study of materials and sources."}, {"word": "insist (v)", "definition": "To demand something forcefully, not accepting refusal."}, {"word": "resign (v)", "definition": "To voluntarily leave a job or other position."}, {"word": "inject (v)", "definition": "To drive or force (a liquid, especially a drug) into a person or animal's body with a syringe."}, {"word": "eager (adj)", "definition": "Strongly wanting to do or have something."}, {"word": "request (n, v)", "definition": "To politely or formally ask for something."}, {"word": "belief (n)", "definition": "An acceptance that a statement is true or that something exists."}, {"word": "rate (n)", "definition": "A measure, quantity, or frequency."}, {"word": "drug (n)", "definition": "A medicine or other substance which has a physiological effect when ingested."}, {"word": "lie (n, v)", "definition": "To make an untrue statement with intent to deceive; a false statement."}, {"word": "shelter (n, v)", "definition": "A place giving temporary protection from bad weather or danger."}, {"word": "liberty (n)", "definition": "The state of being free within society from oppressive restrictions."}, {"word": "loyal (adj)", "definition": "Giving or showing firm and constant support or allegiance."}, {"word": "stock (n, v)", "definition": "The goods or merchandise kept on the premises of a business."}, {"word": "chain (n)", "definition": "A group of establishments, such as hotels or shops, owned by the same company."}, {"word": "tease (v)", "definition": "To make fun of or attempt to provoke in a playful or unkind way."}, {"word": "insult (n, v)", "definition": "To speak to or treat with disrespect or scornful abuse."}, {"word": "style (n)", "definition": "A manner of doing something; a distinctive appearance."}, {"word": "deserve (v)", "definition": "To do something or have or show qualities worthy of reward or punishment."}, {"word": "collaborate (v)", "definition": "To work jointly on an activity, especially to produce or create something."}, {"word": "infectious (adj)", "definition": "Likely to spread infection; likely to spread to others."}, {"word": "recall (v)", "definition": "To bring a fact, event, or situation back into one's mind."}, {"word": "object (n, v)", "definition": "To say something to express one's disapproval or disagreement."}, {"word": "original (adj)", "definition": "Present or existing from the beginning; not a copy."}, {"word": "proficiency (n)", "definition": "A high degree of competence or skill; expertise."}, {"word": "repetitive (adj)", "definition": "Containing or characterized by repetition, especially when unnecessary or tiresome."}, {"word": "option (n)", "definition": "A thing that is or may be chosen."}, {"word": "widely (adv)", "definition": "Over a large area or range; extensively."}, {"word": "tempt (v)", "definition": "To entice or attempt to entice someone to do something."}, {"word": "flexible (adj)", "definition": "Capable of bending easily without breaking; able to change or adapt."}, {"word": "contain (v)", "definition": "To have or hold something within."}, {"word": "devote (v)", "definition": "To give all or a large part of one's time or resources to a specific purpose."}, {"word": "proud (adj)", "definition": "Feeling deep pleasure or satisfaction as a result of one's own achievements."}, {"word": "urgent (adj)", "definition": "Requiring immediate action or attention."}, {"word": "complain (v)", "definition": "To express dissatisfaction or annoyance about a state of affairs or an event."}, {"word": "honor / honour (n, v)", "definition": "High respect; great esteem."}, {"word": "intention (n)", "definition": "A thing intended; an aim or plan."}, {"word": "form (v)", "definition": "To bring together parts to create something."}, {"word": "warn (v)", "definition": "To inform someone in advance of an impending or possible danger."}, {"word": "inherit (v)", "definition": "To receive money, property, or a title as an heir at the death of the previous holder."}, {"word": "organize (v)", "definition": "To arrange into a structured whole; order."}, {"word": "(v, n)", "definition": "To put, lay, or stand something in a specified place or position."}, {"word": "delight (n)", "definition": "Great pleasure."}, {"word": "dare (v)", "definition": "To have the courage to do something."}, {"word": "developed (adj)", "definition": "Advanced or elaborated to a specified degree."}, {"word": "commit (v)", "definition": "To carry out or perpetrate a mistake, crime, or immoral act."}, {"word": "hire (v)", "definition": "To employ someone for wages."}, {"word": "session (n)", "definition": "A period devoted to a particular activity."}, {"word": "explode (v)", "definition": "To burst or shatter violently and noisily."}, {"word": "prejudice (n)", "definition": "Preconceived opinion that is not based on reason or actual experience."}, {"word": "up (v, adj)", "definition": "Unhappy, disappointed, or worried."}, {"word": "scene (n)", "definition": "The place where an incident in real life or fiction occurs."}, {"word": "effort (n)", "definition": "A vigorous or determined attempt."}, {"word": "block (n, v)", "definition": "To make movement or flow difficult or impossible."}, {"word": "scarce (adj)", "definition": "Insufficient for the demand; rare."}, {"word": "promise (n, v)", "definition": "A declaration that one will do or refrain from doing something specified."}, {"word": "latter (adj, n)", "definition": "Occurring nearer to the end of something than to the beginning; the second of two mentioned."}, {"word": "reach (v)", "definition": "To arrive at; to stretch out."}, {"word": "disaster (n)", "definition": "A sudden event, such as an accident or a natural catastrophe, that causes great damage."}, {"word": "treatment (n)", "definition": "Medical care given to a patient for an illness or injury."}, {"word": "compulsory (adj)", "definition": "Required by law or a rule; obligatory."}, {"word": "treat (v)", "definition": "To behave towards or deal with in a certain way; to give medical care."}, {"word": "afford (v)", "definition": "To have enough money to pay for."}, {"word": "silence (n)", "definition": "Complete absence of sound."}, {"word": "defend (v)", "definition": "To resist an attack made on someone or something."}, {"word": "slight (adj)", "definition": "Small in degree; inconsiderable."}, {"word": "universal (adj)", "definition": "Of, affecting, or done by all people or things in the world."}, {"word": "smooth (adj)", "definition": "Having an even and regular surface; free from lumps."}, {"word": "debate (n, v)", "definition": "A formal discussion on a particular topic."}, {"word": "transform (v)", "definition": "To make a thorough or dramatic change in form, appearance, or character."}, {"word": "suitable (adj)", "definition": "Right or appropriate for a particular person, purpose, or situation."}, {"word": "virtuous (adj)", "definition": "Having or showing high moral standards."}, {"word": "pure (adj)", "definition": "Not mixed or adulterated with any other substance or material."}, {"word": "loosen (v)", "definition": "To make something less tight or firm."}, {"word": "interfere (v)", "definition": "To prevent a process or activity from continuing or being carried out properly."}, {"word": "external (adj)", "definition": "Belonging to or forming the outer surface or structure of something."}, {"word": "controversial (adj)", "definition": "Giving rise or likely to give rise to public disagreement."}, {"word": "revenge (n)", "definition": "The action of inflicting hurt or harm on someone for an injury or wrong suffered."}, {"word": "fellow (adj)", "definition": "Sharing a particular activity, quality, or condition with someone."}, {"word": "signal (n, v)", "definition": "A gesture, action, or sound that is used to convey information or instructions."}, {"word": "speculate (v)", "definition": "To form a theory or conjecture about a subject without firm evidence."}, {"word": "individual (n, adj)", "definition": "Single; separate."}, {"word": "pile (n)", "definition": "A heap of things laid or lying one on top of another."}, {"word": "crisis (n)", "definition": "A time of intense difficulty, trouble, or danger."}, {"word": "detect (v)", "definition": "To discover or identify the presence or existence of something."}, {"word": "broad (adj)", "definition": "Having an ample distance from side to side; wide."}, {"word": "overtime (n)", "definition": "Time worked in addition to one's normal working hours."}, {"word": "primarily (adv)", "definition": "For the most part; mainly."}, {"word": "divide (v)", "definition": "To separate or be separated into parts."}, {"word": "temper (n)", "definition": "A person's state of mind seen in terms of their being angry or calm."}, {"word": "sacrifice (n, v)", "definition": "To give up something valued for the sake of other considerations."}, {"word": "enthusiasm (n)", "definition": "Intense and eager enjoyment, interest, or approval."}, {"word": "poll (n, v)", "definition": "The process of voting in an election; a survey of public opinion."}, {"word": "solid (adj)", "definition": "Firm and stable in shape; not liquid or fluid."}, {"word": "load (n, v)", "definition": "A heavy or bulky thing that is being carried or is about to be carried."}, {"word": "symbol (n)", "definition": "A mark or character used as a conventional representation of an object."}, {"word": "shortage (n)", "definition": "A state or situation in which something needed cannot be obtained in sufficient amounts."}, {"word": "network (n, v)", "definition": "A group or system of interconnected people or things."}, {"word": "thoroughly (adv)", "definition": "In a detailed and complete way."}, {"word": "plain (adj)", "definition": "Not decorated or elaborate; simple or ordinary."}, {"word": "definition (n)", "definition": "A statement of the exact meaning of a word."}, {"word": "visualize / visualise (v)", "definition": "To form a mental image of; to imagine."}, {"word": "shine (v)", "definition": "To give out a bright light."}, {"word": "rotate (v)", "definition": "To move or cause to move in a circle around an axis or center."}, {"word": "royal (n, adj)", "definition": "Having the status of a king or queen or a member of their family."}, {"word": "indirect (adj)", "definition": "Not directly caused by or resulting from something."}, {"word": "charge (n, v)", "definition": "To demand an amount as a price for a service rendered or goods supplied."}, {"word": "barrier (n)", "definition": "A fence or other obstacle that prevents movement or access."}, {"word": "policy (n)", "definition": "A course or principle of action adopted or proposed by a government or organization."}, {"word": "push (n, v)", "definition": "To exert force on someone or something in order to move them away."}, {"word": "aloud (adv)", "definition": "Audibly; not silently."}, {"word": "hardly (adv)", "definition": "Scarcely; barely."}, {"word": "ownership (n)", "definition": "The act, state, or right of possessing something."}, {"word": "fate (n)", "definition": "The development of events beyond a person's control, regarded as determined by a supernatural power."}, {"word": "justice (n)", "definition": "Just behavior or treatment; the quality of being fair."}, {"word": "theme (n)", "definition": "The subject of a talk, a piece of writing, a person's thoughts, or an exhibition."}, {"word": "fierce (adj)", "definition": "Having or displaying an intense or ferocious aggressiveness."}, {"word": "political (adj)", "definition": "Relating to the government or the public affairs of a country."}, {"word": "shake (v)", "definition": "To move an object up and down or from side to side with rapid, forceful, jerky movements."}, {"word": "debt (n)", "definition": "Something, typically money, that is owed or due."}, {"word": "apply (v)", "definition": "To make a formal application or request."}, {"word": "input (n)", "definition": "What is put in, taken in, or operated on by any process or system."}, {"word": "price (n)", "definition": "The amount of money expected, required, or given in payment for something."}, {"word": "waste (n, v)", "definition": "To use or expend carelessly, extravagantly, or to no purpose."}, {"word": "jealous (adj)", "definition": "Feeling or showing envy of someone or their achievements and advantages."}, {"word": "current (adj)", "definition": "Belonging to the present time; happening or being used or done now."}, {"word": "guarantee (n, v)", "definition": "A formal promise or assurance."}, {"word": "post (n, v)", "definition": "A long, sturdy piece of timber or metal  upright in the ground; to send via mail."}, {"word": "preferable (adj)", "definition": "More desirable or suitable."}, {"word": "currency (n)", "definition": "A system of money in general use in a particular country."}, {"word": "scratch (n, v)", "definition": "To score or mark the surface of something with a sharp or pointed object."}, {"word": "dimensional (adj)", "definition": "Relating to measurements or dimensions."}, {"word": "fund (n, v)", "definition": "A sum of money saved or made available for a particular purpose."}, {"word": "violent (adj)", "definition": "Using or involving physical force intended to hurt, damage, or kill."}, {"word": "mental (adj)", "definition": "Relating to the mind."}, {"word": "respect (n, v)", "definition": "A feeling of deep admiration for someone or something."}, {"word": "favour/favor (n)", "definition": "Approval, support, or liking for someone or something."}, {"word": "query (v, n)", "definition": "A question, especially one addressed to an official or organization."}, {"word": "bury (v)", "definition": "To put or hide under ground."}, {"word": "hide (n, v)", "definition": "To put or keep out of sight."}, {"word": "conclude (v)", "definition": "To bring something to an end."}, {"word": "quarrel (n, v)", "definition": "An angry argument or disagreement."}, {"word": "regular (adj)", "definition": "Arranged in or constituting a constant or definite pattern."}, {"word": "split (n, v)", "definition": "To break or cause to break forcibly into parts."}, {"word": "cruel (adj)", "definition": "Willfully causing pain or suffering to others, or feeling no concern about it."}, {"word": "exploit (v)", "definition": "To make full use of and derive benefit from (a resource); sometimes unfairly."}, {"word": "bright (adj)", "definition": "Giving out or reflecting a lot of light; vivid or bold."}, {"word": "flow (v, n)", "definition": "To move steadily and continuously in a current or stream."}, {"word": "display (n, v)", "definition": "To make a prominent exhibition of something."}, {"word": "substance (n)", "definition": "A particular kind of matter with uniform properties."}, {"word": "double (adj, v, n)", "definition": "Consisting of two equal, identical, or similar parts or things."}, {"word": "voice (n)", "definition": "The sound produced in a person's larynx and uttered through the mouth."}, {"word": "rest (v, n)", "definition": "To cease work or movement in order to relax, refresh oneself, or recover strength."}, {"word": "allocate (v)", "definition": "To distribute (resources or duties) for a particular purpose."}, {"word": "generation (n)", "definition": "All of the people born and living at about the same time."}, {"word": "ridiculous (adj)", "definition": "Deserving or inviting derision or mockery; absurd."}, {"word": "supply (n, v)", "definition": "To make something needed or wanted available to someone; provide."}, {"word": "attach (v)", "definition": "To fasten, join, or connect something."}, {"word": "tough (adj)", "definition": "Strong enough to withstand adverse conditions or rough handling."}, {"word": "apologize (v)", "definition": "To express regret for something that one has done wrong."}, {"word": "pace (n)", "definition": "A single step taken when walking or running; speed."}, {"word": "cheat (v)", "definition": "To act dishonestly or unfairly in order to gain an advantage."}, {"word": "dull (adj)", "definition": "Lacking interest or excitement; boring."}, {"word": "praise (n, v)", "definition": "To express warm approval or admiration of."}, {"word": "volunteer (v)", "definition": "To freely offer to do something."}, {"word": "gratitude (n)", "definition": "The quality of being thankful; readiness to show appreciation."}, {"word": "depth (n)", "definition": "The distance from the top or surface to the bottom of something."}, {"word": "discount (n)", "definition": "A deduction from the usual cost of something."}, {"word": "ambassador (n)", "definition": "An accredited diplomat sent by a country as its official representative to a foreign country."}, {"word": "nationally (adv)", "definition": "With reference to a whole nation."}, {"word": "vital (adj)", "definition": "Absolutely necessary or important; essential."}, {"word": "calm (adj)", "definition": "Not showing or feeling nervousness, anger, or other strong emotions."}, {"word": "dietician (n)", "definition": "An expert on diet and nutrition."}, {"word": "ancient (adj)", "definition": "Belonging to the very distant past and no longer in existence."}, {"word": "remedy (n, v)", "definition": "A medicine or treatment for a disease or injury."}, {"word": "rely on (v)", "definition": "To depend on with full trust or confidence."}, {"word": "source (n)", "definition": "A place, person, or thing from which something comes or can be obtained."}, {"word": "register (v)", "definition": "To enter or record on an official list or directory."}, {"word": "deadline (n)", "definition": "The latest time or date by which something should be completed."}, {"word": "process (n, v)", "definition": "A series of actions or steps taken in order to achieve a particular end."}, {"word": "scan (v)", "definition": "To look at all parts of something carefully in order to detect some feature."}, {"word": "repair (v)", "definition": "To fix or mend something that is broken or damaged."}, {"word": "virus (n)", "definition": "A piece of code that is capable of copying itself and typically has a detrimental effect; an infective agent."}, {"word": "attitude (n)", "definition": "A tled way of thinking or feeling about someone or something."}, {"word": "giant (n, adj)", "definition": "An imaginary or mythical being of human form but superhuman size; of very great size."}, {"word": "allow (v)", "definition": "To give permission to do something."}, {"word": "regret (v)", "definition": "To feel sad, repentant, or disappointed over something that has happened."}, {"word": "starve (v)", "definition": "To suffer severely or die from hunger."}, {"word": "venue (n)", "definition": "The place where something happens, especially an organized event."}, {"word": "extend (v)", "definition": "To cause to cover a larger area; make longer or wider."}];
+        
+        let currentIndex = 0;
+        const card = document.querySelector('.card');
+        const wordDisplay = document.getElementById('word-display');
+        const defDisplay = document.getElementById('def-display');
+        const progressDisplay = document.getElementById('progress-display');
+        const scene = document.querySelector('.scene');
+
+        // Kartı Başlat
+        function updateCard() {
+            const item = vocabList[currentIndex];
+            wordDisplay.textContent = item.word;
+            defDisplay.textContent = item.definition;
+            progressDisplay.textContent = `Card ${currentIndex + 1} / ${vocabList.length}`;
+            
+            // Eğer kart arkası dönükse düzelt
+            if(card.classList.contains('is-flipped')) {
+                card.classList.remove('is-flipped');
+            }
+        }
+
+        // Çevirme Fonksiyonu
+        scene.addEventListener('click', function() {
+            card.classList.toggle('is-flipped');
+        });
+
+        // İleri Geri Fonksiyonları
+        function nextCard() {
+            if (currentIndex < vocabList.length - 1) {
+                currentIndex++;
+                updateCard();
+            } else {
+                alert("Listenin sonundasın! Başa dönülüyor.");
+                currentIndex = 0;
+                updateCard();
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+            }
+        }
+
+        function randomCard() {
+            currentIndex = Math.floor(Math.random() * vocabList.length);
+            updateCard();
+        }
+
+        // Klavye Kontrolü (Sağ/Sol Ok)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowRight") nextCard();
+            if (e.key === "ArrowLeft") prevCard();
+            if (e.key === " " || e.key === "Enter") card.classList.toggle('is-flipped');
+        });
+
+        // İlk açılış
+        updateCard();
+
+    </script>
+</body>
+</html>
+    
